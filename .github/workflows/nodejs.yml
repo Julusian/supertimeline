@@ -45,6 +45,8 @@ jobs:
         node-version: '12.x'
     - name: yarn release
       run: |
+        git branch -l
+        git log -n 3
         git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
         git remote -v
         git config --global user.email "info@superfly.tv"
