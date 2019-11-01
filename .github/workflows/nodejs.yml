@@ -38,17 +38,17 @@ jobs:
     #  if: github.ref == 'refs/heads/master'
 #     needs: [test, validate-dependencies]
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v1.1.0
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
     - name: yarn release
       run: |
-        git branch -l -v -a
-        git log -n 3
-        git checkout "${GITHUB_REF:11}"
-        git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+        #git branch -l -v -a
+        #git log -n 3
+        git checkout "${GITHUB_REF:11}" # TODO - verify this is safe
+        # git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
         git remote -v
         git config --global user.email "info@superfly.tv"
         git config --global user.name "superflytvab"
@@ -60,3 +60,5 @@ jobs:
         yarn build
     - name: yarn publish
       run: NEW_VERSION=$(node -p "require('./package.json').version") && yarn publish --access=public --new-version=$NEW_VERSION --network-timeout 100000
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
