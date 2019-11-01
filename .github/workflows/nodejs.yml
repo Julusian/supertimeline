@@ -43,12 +43,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-#     - name: yarn docs:publish
-#       run: |
-#         yarn install
-#         yarn docs:publish
     - name: yarn release
       run: |
+        git remote set-url origin "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
         git config --global user.email "info@superfly.tv"
         git config --global user.name "superflytvab"
         yarn release
