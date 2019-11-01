@@ -109,5 +109,8 @@
   ],
   "dependencies": {
     "underscore": "^1.9.1"
+  },
+  "standard-version": {
+    "tagPrefix": ""
   }
 }
