@@ -38,7 +38,7 @@ jobs:
     #  if: github.ref == 'refs/heads/master'
 #     needs: [test, validate-dependencies]
     steps:
-    - uses: actions/checkout@v1.1.0
+    - uses: actions/checkout@v1
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
@@ -48,8 +48,8 @@ jobs:
         #git branch -l -v -a
         #git log -n 3
         git checkout "${GITHUB_REF:11}" # TODO - verify this is safe
-        # git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-        git remote -v
+        git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
+        # git remote -v
         git config --global user.email "info@superfly.tv"
         git config --global user.name "superflytvab"
         yarn release
