@@ -3,40 +3,40 @@ name: Test, Build & Publish
 on: [push]
 
 jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     strategy:
-#       matrix:
-#         node-version: [8.x, 10.x, 12.x]
-#     steps:
-#     - uses: actions/checkout@v1
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v1
-#       with:
-#         node-version: ${{ matrix.node-version }}
-#     - name: yarn test
-#       run: |
-#         yarn install
-#         yarn test
-#     - name: send-coverage
-#       if: matrix.node-version == '12.x'
-#       run: yarn send-coverage
-#   validate-dependencies:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v1
-#     - name: Use Node.js 12.x
-#       uses: actions/setup-node@v1
-#       with:
-#         node-version: '12.x'
-#     - name: yarn validate:dependencies
-#       run: |
-#         yarn install
-#         yarn validate:dependencies
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: yarn test
+      run: |
+        yarn install
+        yarn test
+    - name: send-coverage
+      if: matrix.node-version == '12.x'
+      run: yarn send-coverage
+  validate-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: yarn validate:dependencies
+      run: |
+        yarn install
+        yarn validate:dependencies
   release:
     runs-on: ubuntu-latest
     #  if: github.ref == 'refs/heads/master'
-#     needs: [test, validate-dependencies]
+    needs: [test, validate-dependencies]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js 12.x
@@ -46,11 +46,8 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - name: yarn release
       run: |
-        #git branch -l -v -a
-        #git log -n 3
         git checkout "${GITHUB_REF:11}" # TODO - verify this is safe
         git remote set-url origin https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git
-        # git remote -v
         git config --global user.email "info@superfly.tv"
         git config --global user.name "superflytvab"
         yarn install
