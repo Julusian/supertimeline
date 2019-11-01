@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TimelineState | @julusian/gh-actions-test</title>
+	<title>ResolveOptions | @julusian/gh-actions-test</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2378,16 +2378,19 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface tsd-is-external">
-			<a href="timelinestate.html" class="tsd-kind-icon">Timeline<wbr>State</a>
+			<a href="resolveoptions.html" class="tsd-kind-icon">Resolve<wbr>Options</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="timelinestate.html#layers" class="tsd-kind-icon">layers</a>
+					<a href="resolveoptions.html#limitcount" class="tsd-kind-icon">limit<wbr>Count</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="timelinestate.html#nextevents" class="tsd-kind-icon">next<wbr>Events</a>
+					<a href="resolveoptions.html#limittime" class="tsd-kind-icon">limit<wbr>Time</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a href="timelinestate.html#time" class="tsd-kind-icon">time</a>
+					<a href="resolveoptions.html#resolveinstancecollisions" class="tsd-kind-icon">resolve<wbr>Instance<wbr>Collisions</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a href="resolveoptions.html#time" class="tsd-kind-icon">time</a>
 				</li>
 			</ul>
 		</li>
@@ -2399,7 +2402,7 @@ img {
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">TimelineState</span>
+					<span class="target">ResolveOptions</span>
 				</li>
 			</ul>
 		</section>
@@ -2410,9 +2413,10 @@ img {
 					<section class="tsd-index-section tsd-is-external">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="timelinestate.html#layers" class="tsd-kind-icon">layers</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="timelinestate.html#nextevents" class="tsd-kind-icon">next<wbr>Events</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="timelinestate.html#time" class="tsd-kind-icon">time</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="resolveoptions.html#limitcount" class="tsd-kind-icon">limit<wbr>Count</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="resolveoptions.html#limittime" class="tsd-kind-icon">limit<wbr>Time</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="resolveoptions.html#resolveinstancecollisions" class="tsd-kind-icon">resolve<wbr>Instance<wbr>Collisions</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="resolveoptions.html#time" class="tsd-kind-icon">time</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2421,24 +2425,50 @@ img {
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="layers" class="tsd-anchor"></a>
-				<h3>layers</h3>
-				<div class="tsd-signature tsd-kind-icon">layers<span class="tsd-signature-symbol">:</span> <a href="stateintime.html" class="tsd-signature-type">StateInTime</a></div>
+				<a name="limitcount" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> limit<wbr>Count</h3>
+				<div class="tsd-signature tsd-kind-icon">limit<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L184">api/api.ts:184</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L21">api/api.ts:21</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Limits the number of repeating objects in the future.
+						Defaults to 2, which means that the current one and the next will be resolved.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-				<a name="nextevents" class="tsd-anchor"></a>
-				<h3>next<wbr>Events</h3>
-				<div class="tsd-signature tsd-kind-icon">next<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="nextevent.html" class="tsd-signature-type">NextEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
+				<a name="limittime" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> limit<wbr>Time</h3>
+				<div class="tsd-signature tsd-kind-icon">limit<wbr>Time<span class="tsd-signature-symbol">:</span> <a href="../globals.html#time" class="tsd-signature-type">Time</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L185">api/api.ts:185</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L23">api/api.ts:23</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Limits the repeating objects to a time in the future</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+				<a name="resolveinstancecollisions" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> resolve<wbr>Instance<wbr>Collisions</h3>
+				<div class="tsd-signature tsd-kind-icon">resolve<wbr>Instance<wbr>Collisions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L25">api/api.ts:25</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>If set to true, the resolver will go through the instances of the objects and fix collisions, so that the instances more closely resembles the end state.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 				<a name="time" class="tsd-anchor"></a>
@@ -2446,9 +2476,14 @@ img {
 				<div class="tsd-signature tsd-kind-icon">time<span class="tsd-signature-symbol">:</span> <a href="../globals.html#time" class="tsd-signature-type">Time</a></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L183">api/api.ts:183</a></li>
+						<li>Defined in <a href="https://github.com/Julusian/supertimeline/blob/c581e61/src/api/api.ts#L17">api/api.ts:17</a></li>
 					</ul>
 				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The base time to use when resolving. Usually you want to input the current time (Date.now()) here.</p>
+					</div>
+				</div>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
