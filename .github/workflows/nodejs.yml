@@ -1,4 +1,4 @@
-name: Node CI
+name: Test, Build & Publish
 
 on: [push]
 
@@ -52,6 +52,7 @@ jobs:
         # git remote -v
         git config --global user.email "info@superfly.tv"
         git config --global user.name "superflytvab"
+        yarn install
         yarn release
         git push --follow-tags origin HEAD
     - name: yarn build
