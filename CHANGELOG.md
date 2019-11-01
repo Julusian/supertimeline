@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.3](https://github.com/SuperFlyTV/supertimeline/compare/7.0.2...7.0.3) (2019-11-01)
+
 ### [7.0.2](https://github.com/SuperFlyTV/supertimeline/compare/v7.0.1...v7.0.2) (2019-11-01)
 
 
