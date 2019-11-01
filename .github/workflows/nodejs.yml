@@ -3,43 +3,40 @@ name: Node CI
 on: [push]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: yarn test
-      run: |
-        yarn install
-        yarn test
-    - name: send-coverage
-      if: matrix.node-version == '12.x'
-      run: yarn send-coverage
-    - name: send-coverage
-      if: matrix.node-version == '12.x'
-      run: yarn send-coverage
-  validate-dependencies:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - name: yarn validate:dependencies
-      run: |
-        yarn install
-        yarn validate:dependencies
+#   test:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [8.x, 10.x, 12.x]
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: yarn test
+#       run: |
+#         yarn install
+#         yarn test
+#     - name: send-coverage
+#       if: matrix.node-version == '12.x'
+#       run: yarn send-coverage
+#   validate-dependencies:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - name: Use Node.js 12.x
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '12.x'
+#     - name: yarn validate:dependencies
+#       run: |
+#         yarn install
+#         yarn validate:dependencies
   release:
     runs-on: ubuntu-latest
     #  if: github.ref == 'refs/heads/master'
-    needs: [test, validate-dependencies]
+#     needs: [test, validate-dependencies]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js 12.x
@@ -51,7 +48,11 @@ jobs:
 #         yarn install
 #         yarn docs:publish
     - name: yarn release
-      run: yarn release
+      run: |
+        git config --global user.email "info@superfly.tv"
+        git config --global user.name "superflytvab"
+        yarn release
+        git push --follow-tags origin HEAD
     - name: yarn build
       run: |
         yarn install
